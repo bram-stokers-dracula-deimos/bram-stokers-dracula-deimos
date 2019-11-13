@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        input {
+            width: 35px;
+            margin: 20px 0;
+        }
+        button {
+            padding: 10px;
+            margin: 0 auto;
+        }
+        #buttons {
+            display: flex;
+            flex-wrap: wrap;
+            width: 125px;
+            height: 50px;
+            justify-content: space-evenly;
+        }
+    </style>
+
+</head>
+<body>
+<input id="left" class="input" type="number" readonly><input id="center" class="input" type="text" readonly><input id="right" class="input" type="text" readonly>
+<div id="buttons">
+    <button class="number" value="1">1</button>
+    <button class="number" value="2">2</button>
+    <button class="number" value="3">3</button>
+
+    <button class="sign" value="+">+</button>
+
+    <button class="number" value="4">4</button>
+    <button class="number" value="5">5</button>
+    <button class="number" value="6">6</button>
+
+        <button class="sign" value="-">-</button>
+
+    <button class="number" value="7">7</button>
+    <button class="number" value="8">8</button>
+    <button class="number" value="9">9</button>
+
+        <button class="sign" value="*">*</button>
+
+        <button id="clear">C</button>
+    <button class="number" value="0">0</button>
+        <button id="equals">=</button>
+
+        <button class="sign" value="/">/</button>
+</div>
+
+<script src="kenneth-howell-js.js"></script>
+</body>
+</html>
