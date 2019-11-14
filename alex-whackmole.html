@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Whack a Mole</title>
+    <style>
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 165px);
+            grid-template-rows: repeat(3, 165px);
+            border: solid black 3px;
+            height: 500px;
+            width: 500px;
+            background: black;
+            grid-gap: 3px;
+        }
+
+        .gridSpot1 {
+            background: white;
+            grid-row: 1/2;
+            grid-column: 1/2;
+        }
+
+        .gridSpot2 {
+            background: white;
+            grid-row: 1/2;
+            grid-column: 2/3;
+        }
+
+        .gridSpot3 {
+            background: white;
+            grid-row: 1/2;
+            grid-column: 3/4;
+        }
+
+        .gridSpot4 {
+            background: white;
+            grid-row: 2/3;
+            grid-column: 1/2;
+        }
+
+        .gridSpot5 {
+            background: white;
+            grid-row: 2/3;
+            grid-column: 2/3;
+        }
+
+        .gridSpot6 {
+            background: white;
+            grid-row: 2/3;
+            grid-column: 3/4;
+        }
+
+        .gridSpot7 {
+            background: white;
+            grid-row: 3/4;
+            grid-column: 1/2;
+        }
+
+        .gridSpot8 {
+            background: white;
+            grid-row: 3/4;
+            grid-column: 2/3;
+        }
+
+        .gridSpot9 {
+            background: white;
+            grid-row: 3/4;
+            grid-column: 3/4;
+        }
+
+        .mole {
+            height: 165px;
+            width: 165px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Whack-A-Mole<button class="startGame">Start</button></h1>
+    <h3 class="timer">Time Left: 30</h3>
+    <h3 class="score">Whacked Moles: 0</h3>
+    <div class="container">
+        <div class="gridSpot1"></div>
+        <div class="gridSpot2"></div>
+        <div class="gridSpot3"></div>
+        <div class="gridSpot4"></div>
+        <div class="gridSpot5"></div>
+        <div class="gridSpot6"></div>
+        <div class="gridSpot7"></div>
+        <div class="gridSpot8"></div>
+        <div class="gridSpot9"></div>
+    </div>
+<script src="jquery-2.2.4.js"></script>
+<script>
+    let score = 0;
+    let timer = 30;
+    $('.startGame').click(() => {
+        let gameTime = setInterval(() => {
+            timer -= 1;
+            $('.timer').html("Time Left: " + timer);
+        }, 1000);
+        let game = setInterval(() => {
+            let position = Math.floor(Math.random() * 9) + 1;
+            if (position === 1){
+                $('.container').children().empty();
+                $('.gridSpot1').html("<img class='mole' src='mole.png'>");
+                $('.mole').click(function() {
+                    $('.gridSpot1').empty();
+                    score += 1;
+                    $('.score').html('Whacked Moles: ' + score);
+                })
+            }
+            if (position === 2){
+                $('.container').children().empty();
+                $('.gridSpot2').html("<img class='mole' src='mole.png'>");
+                $('.mole').click(function() {
+                    $('.gridSpot2').empty();
+                    score += 1;
+                    $('.score').html('Whacked Moles: ' + score);
+                })
+            }
+            if (position === 3){
+                $('.container').children().empty();
+                $('.gridSpot3').html("<img class='mole' src='mole.png'>");
+                $('.mole').click(function() {
+                    $('.gridSpot3').empty();
+                    score += 1;
+                    $('.score').html('Whacked Moles: ' + score);
+                })
+            }
+            if (position === 4){
+                $('.container').children().empty();
+                $('.gridSpot4').html("<img class='mole' src='mole.png'>");
+                $('.mole').click(function() {
+                    $('.gridSpot4').empty();
+                    score += 1;
+                    $('.score').html('Whacked Moles: ' + score);
+                })
+            }
+            if (position === 5){
+                $('.container').children().empty();
+                $('.gridSpot5').html("<img class='mole' src='mole.png'>");
+                $('.mole').click(function() {
+                    $('.gridSpot5').empty();
+                    score += 1;
+                    $('.score').html('Whacked Moles: ' + score);
+                })
+            }
+            if (position === 6){
+                $('.container').children().empty();
+                $('.gridSpot6').html("<img class='mole' src='mole.png'>");
+                $('.mole').click(function() {
+                    $('.gridSpot6').empty();
+                    score += 1;
+                    $('.score').html('Whacked Moles: ' + score);
+                })
+            }
+            if (position === 7){
+                $('.container').children().empty();
+                $('.gridSpot7').html("<img class='mole' src='mole.png'>");
+                $('.mole').click(function() {
+                    $('.gridSpot7').empty();
+                    score += 1;
+                    $('.score').html('Whacked Moles: ' + score);
+                })
+            }
+            if (position === 8){
+                $('.container').children().empty();
+                $('.gridSpot8').html("<img class='mole' src='mole.png'>");
+                $('.mole').click(function() {
+                    $('.gridSpot8').empty();
+                    score += 1;
+                    $('.score').html('Whacked Moles: ' + score);
+                })
+            }
+            if (position === 9){
+                $('.container').children().empty();
+                $('.gridSpot9').html("<img class='mole' src='mole.png'>");
+                $('.mole').click(function() {
+                    $('.gridSpot9').empty();
+                    score += 1;
+                    $('.score').html('Whacked Moles: ' + score);
+                })
+            }
+            if (timer === 0){
+                clearInterval(game);
+                clearInterval(gameTime);
+                alert("Game Over! Your score was " + score);
+                $('.container').children().empty();
+            }
+        }, 750);
+
+
+    });
+
+
+</script>
+</body>
+</html>
