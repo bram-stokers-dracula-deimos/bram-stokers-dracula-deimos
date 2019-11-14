@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Basic Exercises</title>
+</head>
+<body>
+<!--This exercise was found on https://edabit.com/challenge/XYDCXdCn6bqaT6SJm-->
+<!--This function will determine whether a password is considered a strong
+password based on certain criteria
+-has to be at least six characters
+-must contain a lowercase character
+-must contain an uppercase character
+-must contain a special symbol-->
+<script>
+    const strongPassword = password => {
+        let symbol = ['!', '@', '#', '$', '%', '&', '*', '(', ')'];
+        password = password.split("");
+        if (password.length < 6){
+            return false;
+        }
+        let letters = password.filter(function(letter) {
+            return letter.toLowerCase() !== letter.toUpperCase();
+        });
+        let lowercase = letters.filter(function(character) {
+            return character === character.toLowerCase();
+        });
+        let uppercase = letters.filter(function(character) {
+            return character === character.toUpperCase();
+        });
+        if (lowercase.length === 0 || uppercase.length === 0){
+            return false;
+        }
+        let special = password.filter(function(character) {
+            return symbol.includes(character);
+        });
+        return special.length !== 0;
+    };
+    console.log(strongPassword("abc123"), false);
+    console.log(strongPassword("Abc1@3"), true);
+    console.log(strongPassword("aAb$e"), false);
+    console.log(strongPassword("aFrBsEsXfD4$"), true);
+</script>
+</body>
+</html>
