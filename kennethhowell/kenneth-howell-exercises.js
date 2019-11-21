@@ -86,22 +86,39 @@ function onetoNineRandom(num){
 }
 // FOR CASE: SPLIT ALPHABET ARRAY IN TWO FOR BOTH CASES DESIRED, FOR UPPERCASE CONTINUE ON PATH TO JOIN ARR>.TOUPPERCASE>BACK TO ARR
 
-function alphabetRandom(num, casestr){
+function alphabetRandom(num){
     let returnarr = [];
     let characterarr = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
-    for (let i = 0; i < num; i++){
-        let index = (Math.floor(Math.random() * 26));
-        returnarr.push(characterarr[index]);
-    };
-    if (casestr === "upper" || casestr === "UPPER"){
-        returnarr
-    }
+        for (let i = 0; i < num; i++){
+            let index = (Math.floor(Math.random() * 26));
+            returnarr.push(characterarr[index]);
+        }
     return returnarr;
+}
+function caseUpperLower(arr){
+    let workingarr = arr.flat(Infinity);
+    let arrlengthhalf = workingarr.length / 2;
+    workingarr.sort().reverse();
+    let halfarr = workingarr.splice(0, arrlengthhalf);
+    let strarrhalf = halfarr.length / 2;
+    // console.log("Half of the array reporting in: " + halfarr);
+    let halfstr = halfarr.splice(0, strarrhalf);
+    halfstr = halfstr.join("");
+    halfstr = halfstr.toUpperCase();
+    // console.log("Half the string reporting in uppercase: " + halfstr);
+    halfstr = halfstr.split("");
+    halfarr.push(halfstr);
+    workingarr.push(halfarr);
+    workingarr = workingarr.flat(2);
+    // console.log("caseUpperLower at the end reporting in: " + workingarr);
+    return workingarr;
+
 }
 
 function genPassword(totallength, specialcharnum, digits, casestr){
     let workinglength = totallength;
     let generatedPW = [];
+    let caseinput = casestr.toLowerCase();
     if (specialcharnum > 0){
         workinglength = workinglength - specialcharnum;
         generatedPW.push(specialCharacters(specialcharnum))
@@ -110,19 +127,25 @@ function genPassword(totallength, specialcharnum, digits, casestr){
         workinglength = workinglength -  digits;
         generatedPW.push(onetoNineRandom(digits));
     };
-    if (workinglength > 0){
-       for (let i = 0; i < workinglength; i++){
-            workinglength = workinglength--;
-            generatedPW.push(alphabetRandom(workinglength))
-        }
+    if (workinglength >= 0){
+        generatedPW.push(alphabetRandom(workinglength));
     };
+    if (caseinput === "both") {
+        generatedPW = caseUpperLower(generatedPW);
+    };
+    if (caseinput === "upper"){
+        generatedPW = generatedPW.join("");
+        generatedPW = generatedPW.toUpperCase();
+        generatedPW = generatedPW.split("");
+    };
+
     generatedPW = generatedPW.flat(Infinity);
     generatedPW.sort(function(a,b){return 0.5 - Math.random()});
     generatedPW = generatedPW.join("");
-    console.log(generatedPW);
+    return generatedPW;
 }
 
-
-genPassword(9, 4, 2)
-
+password = genPassword(5, 2, 1, "both");
+console.log("Got your new password here: " + password);
+// console.log(alphabetRandom(4));;
 
