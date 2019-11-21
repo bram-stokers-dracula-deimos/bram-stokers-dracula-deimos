@@ -59,36 +59,70 @@ function countPalindrones(arr){
 // console.log(countPalindrones(palindromeArray3));
 // console.log(countPalindrones(palindromeArray4));
 
-// todo:
-//  Write a sudoku validator. This function should return true if the 2-D array represents a valid sudoku and false otherwise. To be a valid sudoku:
-//  Each row must have the digits from 1 to 9 exactly once.
-//  Each column must have the digits from 1 to 9 exactly once.
-//  Each 3x3 box must have the digits from 1 to 9 exactly once.
-//  Examples
-//  sudokuValidator([
-//     [ 1, 5, 2, 4, 8, 9, 3, 7, 6 ],
-//     [ 7, 3, 9, 2, 5, 6, 8, 4, 1 ],
-//     [ 4, 6, 8, 3, 7, 1, 2, 9, 5 ],
-//     [ 3, 8, 7, 1, 2, 4, 6, 5, 9 ],
-//     [ 5, 9, 1, 7, 6, 3, 4, 2, 8 ],
-//     [ 2, 4, 6, 8, 9, 5, 7, 1, 3 ],
-//     [ 9, 1, 4, 6, 3, 7, 5, 8, 2 ],
-//     [ 6, 2, 5, 9, 4, 8, 1, 3, 7 ],
-//     [ 8, 7, 3, 5, 1, 2, 9, 6, 4 ]
-//     ]) ➞ true
-//     sudokuValidator([
-//     [ 1, 1, 2, 4, 8, 9, 3, 7, 6 ],
-//     [ 7, 3, 9, 2, 5, 6, 8, 4, 1 ],
-//     [ 4, 6, 8, 3, 7, 1, 2, 9, 5 ],
-//     [ 3, 8, 7, 1, 2, 4, 6, 5, 9 ],
-//     [ 5, 9, 1, 7, 6, 3, 4, 2, 8 ],
-//     [ 2, 4, 6, 8, 9, 5, 7, 1, 3 ],
-//     [ 9, 1, 4, 6, 3, 7, 5, 8, 2 ],
-//     [ 6, 2, 5, 9, 4, 8, 1, 3, 7 ],
-//     [ 8, 7, 3, 5, 1, 2, 9, 6, 4 ]
-//     ]) ➞ false
+// todo: Password Generator
+//  Create a script which will generate a random password, similar to this example. Allow your user to specify:
+//  Total length
+//  Number of special characters (including none)
+//  Number of digits (including none)
+//  Whether to use upper case, lower case, or both
 
-// check initial array; build out to three 3x3s, expand out?
-function arrayCheck(arr){
-
+function specialCharacters(num){
+    var specialchars = ["!","@","#","$","%","^","&","*","(",")","-","_","+","=","~",":",";","[","]","{","}","|","/","<",">"];
+    var returnarr = [];
+    for (let i = 0; i < num; i++){
+        let index = (Math.floor(Math.random() * 25));
+        returnarr.push(specialchars[index]);
+    }
+    return returnarr;
 }
+
+function onetoNineRandom(num){
+    let returnarr = [];
+    for (let i = 0; i < num; i++){
+        let number = (Math.floor(Math.random() * 10));
+        returnarr.push(number)
+    }
+    return returnarr;
+}
+// FOR CASE: SPLIT ALPHABET ARRAY IN TWO FOR BOTH CASES DESIRED, FOR UPPERCASE CONTINUE ON PATH TO JOIN ARR>.TOUPPERCASE>BACK TO ARR
+
+function alphabetRandom(num, casestr){
+    let returnarr = [];
+    let characterarr = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+    for (let i = 0; i < num; i++){
+        let index = (Math.floor(Math.random() * 26));
+        returnarr.push(characterarr[index]);
+    };
+    if (casestr === "upper" || casestr === "UPPER"){
+        returnarr
+    }
+    return returnarr;
+}
+
+function genPassword(totallength, specialcharnum, digits, casestr){
+    let workinglength = totallength;
+    let generatedPW = [];
+    if (specialcharnum > 0){
+        workinglength = workinglength - specialcharnum;
+        generatedPW.push(specialCharacters(specialcharnum))
+    };
+    if (digits > 0){
+        workinglength = workinglength -  digits;
+        generatedPW.push(onetoNineRandom(digits));
+    };
+    if (workinglength > 0){
+       for (let i = 0; i < workinglength; i++){
+            workinglength = workinglength--;
+            generatedPW.push(alphabetRandom(workinglength))
+        }
+    };
+    generatedPW = generatedPW.flat(Infinity);
+    generatedPW.sort(function(a,b){return 0.5 - Math.random()});
+    generatedPW = generatedPW.join("");
+    console.log(generatedPW);
+}
+
+
+genPassword(9, 4, 2)
+
+
