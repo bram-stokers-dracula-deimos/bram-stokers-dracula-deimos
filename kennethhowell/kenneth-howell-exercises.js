@@ -84,7 +84,6 @@ function onetoNineRandom(num){
     }
     return returnarr;
 }
-// FOR CASE: SPLIT ALPHABET ARRAY IN TWO FOR BOTH CASES DESIRED, FOR UPPERCASE CONTINUE ON PATH TO JOIN ARR>.TOUPPERCASE>BACK TO ARR
 
 function alphabetRandom(num){
     let returnarr = [];
@@ -156,24 +155,24 @@ function changeEnough(changearray, totalprice){
     let changevalidate;
     let notchange;
     changearray.forEach(function(element){
-        if (isNaN(element)){
-            changevalidate = isNaN(element);
+        if (isNaN(element) || typeof element === "boolean"){
+            changevalidate = false;
             notchange = element;
             return changevalidate;
         }
     });
 
-    if (isNaN(totalprice) && changevalidate === true){
+    if (isNaN(totalprice) && changevalidate === false){
         console.log(`${notchange}? And what you're buying is ${totalprice}? What is going on in this transaction?`)
     };
 
-    if (isNaN(totalprice)){
-        console.log("What the heck are you buying that charges whatever that is?");
+    if (isNaN(totalprice) || typeof totalprice === "boolean"){
+        console.log("What the heck are you buying that charges that?");
         return;
     };
 
-    if (changevalidate === true){
-        console.log(` ${notchange}? Whatever else you have in your pocket is your business. . .`);
+    if (changevalidate === false){
+        console.log(` ${notchange}? Whatever else you have in your pocket is your business...`);
         return;
     };
 
@@ -191,8 +190,11 @@ function changeEnough(changearray, totalprice){
 
     }
 }
-
-changeEnough([4, 10, 20, 100], 5.03);
+console.log("Success paths:");
+changeEnough( [4, 10, 20, 100], 5.03);
+changeEnough( [10, 20, 30, 400], 5.03);
+console.log("Failure paths:");
 changeEnough([2, 44, 1, 15], "peso");
 changeEnough(["chuck e cheese token", 44, 1, 15], 4);
-changeEnough(["chuck e cheese token", 44, 1, 15], "peso");
+changeEnough([true, 44, 1, 15], 4);
+changeEnough(["chuck e cheese token", 44, 1, 15], true);
