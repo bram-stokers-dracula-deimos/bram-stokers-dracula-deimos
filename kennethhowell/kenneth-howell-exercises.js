@@ -133,6 +133,7 @@ function genPassword(totallength, specialcharnum, digits, casestr){
         generatedPW = caseUpperLower(generatedPW);
     };
     if (caseinput === "upper"){
+        generatedPW = generatedPW.flat(Infinity);
         generatedPW = generatedPW.join("");
         generatedPW = generatedPW.toUpperCase();
         generatedPW = generatedPW.split("");
@@ -141,12 +142,17 @@ function genPassword(totallength, specialcharnum, digits, casestr){
     generatedPW = generatedPW.flat(Infinity);
     generatedPW.sort(function(a,b){return 0.5 - Math.random()});
     generatedPW = generatedPW.join("");
+    console.log(generatedPW);
     return generatedPW;
 }
 
-// password = genPassword(5, 2, 1, "both");
-// console.log("Got your new password here: " + password);
-// console.log(alphabetRandom(4));
+password = genPassword(5, 2, 1, "both");
+console.log("Got your new password here: " + password);
+password = genPassword(10, 0, 3, "upper");
+console.log("Got your new password here: " + password);
+password = genPassword(7, 2, 0, "lower");
+console.log("Got your new password here: " + password);
+
 
 // TODO: Given a total due and an array representing the amount of change in your pocket, determine whether or not you are able to pay for the item. Change will always be represented in the following order: quarters, dimes, nickels, pennies.
 //  To illustrate: changeEnough([25, 20, 5, 0], 4.25) should yield true, since having 25 quarters, 20 dimes, 5 nickels and 0 pennies gives you 6.25 + 2 + .25 + 0 = 8.50.
@@ -222,7 +228,8 @@ function numberofsubArrays (arr){
     return counter;
 }
 
-console.log(numberofsubArrays(onearray));
-console.log(numberofsubArrays(twoarrays));
-console.log(numberofsubArrays(threearrays));
-console.log(numberofsubArrays(manyarrays));
+// console.log(numberofsubArrays(onearray));
+// console.log(numberofsubArrays(twoarrays));
+// console.log(numberofsubArrays(threearrays));
+// eight arrays below
+// console.log(numberofsubArrays(manyarrays));
