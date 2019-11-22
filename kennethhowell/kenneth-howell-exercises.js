@@ -146,12 +146,12 @@ function genPassword(totallength, specialcharnum, digits, casestr){
     return generatedPW;
 }
 
-password = genPassword(5, 2, 1, "both");
-console.log("Got your new password here: " + password);
-password = genPassword(10, 0, 3, "upper");
-console.log("Got your new password here: " + password);
-password = genPassword(7, 2, 0, "lower");
-console.log("Got your new password here: " + password);
+// password = genPassword(7, 2, 1, "both");
+// console.log("Got your new password here: " + password);
+// password = genPassword(10, 2, 3, "upper");
+// console.log("Got your new password here: " + password);
+// password = genPassword(7, 2, 0, "lower");
+// console.log("Got your new password here: " + password);
 
 
 // TODO: Given a total due and an array representing the amount of change in your pocket, determine whether or not you are able to pay for the item. Change will always be represented in the following order: quarters, dimes, nickels, pennies.
@@ -173,7 +173,7 @@ function changeEnough(changearray, totalprice){
     };
 
     if (isNaN(totalprice) || typeof totalprice === "boolean"){
-        console.log("What the heck are you buying that charges that?");
+        console.log(`${totalprice}? What the heck are you buying that charges that?`);
         return;
     };
 
@@ -200,7 +200,7 @@ function changeEnough(changearray, totalprice){
 // changeEnough( [4, 10, 20, 100], 5.03);
 // changeEnough( [10, 20, 30, 400], 5.03);
 // console.log("Failure paths:");
-// changeEnough([2, 44, 1, 15], "peso");
+// changeEnough(["lint", 44, 1, 15], "peso");
 // changeEnough(["chuck e cheese token", 44, 1, 15], 4);
 // changeEnough([true, 44, 1, 15], 4);
 // changeEnough(["chuck e cheese token", 44, 1, 15], true);
@@ -228,8 +228,8 @@ function numberofsubArrays (arr){
     return counter;
 }
 
-// console.log(numberofsubArrays(onearray));
-// console.log(numberofsubArrays(twoarrays));
-// console.log(numberofsubArrays(threearrays));
+console.log(numberofsubArrays(onearray));
+console.log(numberofsubArrays(twoarrays));
+console.log(numberofsubArrays(threearrays));
 // eight arrays below
-// console.log(numberofsubArrays(manyarrays));
+console.log(numberofsubArrays(manyarrays));
