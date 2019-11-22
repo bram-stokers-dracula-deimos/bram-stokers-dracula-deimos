@@ -145,7 +145,54 @@ function genPassword(totallength, specialcharnum, digits, casestr){
     return generatedPW;
 }
 
-password = genPassword(5, 2, 1, "both");
-console.log("Got your new password here: " + password);
-// console.log(alphabetRandom(4));;
+// password = genPassword(5, 2, 1, "both");
+// console.log("Got your new password here: " + password);
+// console.log(alphabetRandom(4));
 
+// TODO: Given a total due and an array representing the amount of change in your pocket, determine whether or not you are able to pay for the item. Change will always be represented in the following order: quarters, dimes, nickels, pennies.
+//  To illustrate: changeEnough([25, 20, 5, 0], 4.25) should yield true, since having 25 quarters, 20 dimes, 5 nickels and 0 pennies gives you 6.25 + 2 + .25 + 0 = 8.50.
+
+function changeEnough(changearray, totalprice){
+    let changevalidate;
+    let notchange;
+    changearray.forEach(function(element){
+        if (isNaN(element)){
+            changevalidate = isNaN(element);
+            notchange = element;
+            return changevalidate;
+        }
+    });
+
+    if (isNaN(totalprice) && changevalidate === true){
+        console.log(`${notchange}? And what you're buying is ${totalprice}? What is going on in this transaction?`)
+    };
+
+    if (isNaN(totalprice)){
+        console.log("What the heck are you buying that charges whatever that is?");
+        return;
+    };
+
+    if (changevalidate === true){
+        console.log(` ${notchange}? Whatever else you have in your pocket is your business. . .`);
+        return;
+    };
+
+
+    let quarterstotal = changearray[0] * .25;
+    let dimestotal = changearray[1] * .10;
+    let nickelstotal = changearray[2] * .05;
+    let penniestotal = changearray[3] * .01;
+    let changetotal = (quarterstotal + dimestotal + nickelstotal + penniestotal);
+
+    if (changetotal > totalprice){
+        console.log(`$${quarterstotal.toFixed(2)} is your total from ${changearray[0]} quarters. \n$${dimestotal.toFixed(2)} is your total from ${changearray[1]} dimes. \n$${nickelstotal.toFixed(2)} is your total from ${changearray[2]} nickels. \n$${penniestotal.toFixed(2)} is your total from ${changearray[3]} pennies. \nYour change adds up to $${changetotal.toFixed(2)}! \nYou're good to go since the total price is $${totalprice.toFixed(2)} and you have $${(changetotal - totalprice).toFixed(2)} left.`)
+    } else {
+        console.log(`$${quarterstotal.toFixed(2)} is your total from ${changearray[0]} quarters. \n$${dimestotal.toFixed(2)} is your total from ${changearray[1]} dimes. \n$${nickelstotal.toFixed(2)} is your total from ${changearray[2]} nickels. \n$${penniestotal.toFixed(2)} is your total from ${changearray[3]} pennies. \nYour change adds up to $${changetotal.toFixed(2)}! \nBad news since your total was $${totalprice.toFixed(2)} meaning you need $${(totalprice - changetotal).toFixed(2)} to purchase.`)
+
+    }
+}
+
+changeEnough([4, 10, 20, 100], 5.03);
+changeEnough([2, 44, 1, 15], "peso");
+changeEnough(["chuck e cheese token", 44, 1, 15], 4);
+changeEnough(["chuck e cheese token", 44, 1, 15], "peso");
