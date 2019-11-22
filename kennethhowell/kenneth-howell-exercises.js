@@ -190,11 +190,39 @@ function changeEnough(changearray, totalprice){
 
     }
 }
-console.log("Success paths:");
-changeEnough( [4, 10, 20, 100], 5.03);
-changeEnough( [10, 20, 30, 400], 5.03);
-console.log("Failure paths:");
-changeEnough([2, 44, 1, 15], "peso");
-changeEnough(["chuck e cheese token", 44, 1, 15], 4);
-changeEnough([true, 44, 1, 15], 4);
-changeEnough(["chuck e cheese token", 44, 1, 15], true);
+// console.log("Success paths:");
+// changeEnough( [4, 10, 20, 100], 5.03);
+// changeEnough( [10, 20, 30, 400], 5.03);
+// console.log("Failure paths:");
+// changeEnough([2, 44, 1, 15], "peso");
+// changeEnough(["chuck e cheese token", 44, 1, 15], 4);
+// changeEnough([true, 44, 1, 15], 4);
+// changeEnough(["chuck e cheese token", 44, 1, 15], true);
+
+
+// todo: Return the total number of arrays inside a given array.
+
+let threearrays = [[1,2,3],[3,2,1],[2,1,3]];
+let twoarrays = [[1,2,],[2,1]];
+let onearray = [1,2];
+let manyarrays = [[1,2],[3,4,5],[6,7,8],[9,0],[9,8,7],[6,5],[4,3,2,1],[0,0,0]];
+
+function numberofsubArrays (arr){
+    let counter = 0;
+    if (typeof arr[1] === "object"){
+    arr.forEach(function(subarray){
+        if (Array.isArray(subarray)){
+            counter++;
+            return;
+        };
+    })} else if (Array.isArray(arr) && typeof arr[1] !== "object"){
+        counter++;
+    }
+
+    return counter;
+}
+
+console.log(numberofsubArrays(onearray));
+console.log(numberofsubArrays(twoarrays));
+console.log(numberofsubArrays(threearrays));
+console.log(numberofsubArrays(manyarrays));
