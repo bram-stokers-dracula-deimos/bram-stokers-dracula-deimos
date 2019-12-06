@@ -1,4 +1,4 @@
-"use strict";
+// "use strict";
 
 // POSSIBLE HELP
 
@@ -134,14 +134,14 @@
 // // 2nd new stuff
 //
 
-$( function() {
-    $( "#star-five" ).draggable();
-    $( "#star1" ).droppable({
-        drop: function( event, ui ) {
-            $( this )
-                .addClass( "ui-state-highlight" )
-                .find( "p" )
-                .html( "Dropped!" );
-        }
-    });
-} );
+// $( function() {
+//     $( "#star-five" ).draggable();
+//     $( "#star1" ).droppable({
+//         drop: function( event, ui ) {
+//             $( this )
+//                 .addClass( "ui-state-highlight" )
+//                 .find( "p" )
+//                 .html( "Dropped!" );
+//         }
+//     });
+// } );
