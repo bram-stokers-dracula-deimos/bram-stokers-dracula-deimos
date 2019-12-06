@@ -1,132 +1,60 @@
 "use strict";
 
+// POSSIBLE HELP
+
 //
-// function dragElement(elementById) {
-//
-// }
-//
-// function init() {
-//     var toppings = "#pineapple,#pepperoni";
-//     var dragItem = document.getElementById('#pineapple');
-//                    // document.querySelector("#pinapple");
-//
-//
-//     var container = document.querySelector("#container");
-//
-//     var active = false;
-//     var currentX;
-//     var currentY;
-//     var initialX;
-//     var initialY;
-//     var xOffset = 0;
-//     var yOffset = 0;
-//
-//
-//     dragElement(document.getElementById("#pineapple"));
-//
-//     container.addEventListener("mousedown", dragStart, false);
-//     container.addEventListener("mouseup", dragEnd, false);
-//     container.addEventListener("mousemove", drag, false);
-//
-//     function dragStart(e) {
-//         if (e.type === "touchstart") {
-//             initialX = e.touches[0].clientX - xOffset;
-//             initialY = e.touches[0].clientY - yOffset;
-//         } else {
-//             initialX = e.clientX - xOffset;
-//             initialY = e.clientY - yOffset;
-//         }
-//
-//         if (e.target === dragItem) {
-//             active = true;
-//         }
+// function dragElement(elmnt) {
+//     var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+//     if (document.getElementsByClassName("toppings")) {
+//         /* if present, the header is where you move the DIV from:*/
+//         document.getElementsByClassName("toppings").onmousedown = dragMouseDown;
+//     } else {
+//         /* otherwise, move the DIV from anywhere inside the DIV:*/
+//         elmnt.onmousedown = dragMouseDown;
 //     }
 //
-//     function dragEnd(e) {
-//         initialX = currentX;
-//         initialY = currentY;
-//
-//         active = false;
+//     function dragMouseDown(e) {
+//         e = e || window.event;
+//         e.preventDefault();
+//         // get the mouse cursor position at startup:
+//         pos3 = e.clientX;
+//         pos4 = e.clientY;
+//         document.onmouseup = closeDragElement;
+//         // call a function whenever the cursor moves:
+//         document.onmousemove = elementDrag;
 //     }
 //
-//     function drag(e) {
-//         if (active) {
-//
-//             e.preventDefault();
-//
-//             if (e.type === "touchmove") {
-//                 currentX = e.touches[0].clientX - initialX;
-//                 currentY = e.touches[0].clientY - initialY;
-//             } else {
-//                 currentX = e.clientX - initialX;
-//                 currentY = e.clientY - initialY;
-//             }
-//
-//             xOffset = currentX;
-//             yOffset = currentY;
-//
-//             setTranslate(currentX, currentY, dragItem);
-//         }
+//     function elementDrag(e) {
+//         e = e || window.event;
+//         e.preventDefault();
+//         // calculate the new cursor position:
+//         pos1 = pos3 - e.clientX;
+//         pos2 = pos4 - e.clientY;
+//         pos3 = e.clientX;
+//         pos4 = e.clientY;
+//         // set the element's new position:
+//         elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+//         elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
 //     }
 //
-//     function setTranslate(xPos, yPos, el) {
-//         el.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";
+//     function closeDragElement() {
+//         /* stop moving when mouse button is released:*/
+//         document.onmouseup = null;
+//         document.onmousemove = null;
 //     }
-// }
+}
+
+// END OF POSSIBLE HELP
+
+
+
+
 //
-//
-//
-//
-// function startDrag(e) {
-//     // determine event object
-//     if (!e) {
-//         var e = window.event;
-//     }
-//
-//     // IE uses srcElement, others use target
-//     var targ = e.target ? e.target : e.srcElement;
-//
-//     if (targ.className !== 'pineapple') {return};
-//     // calculate event X, Y coordinates
-//     let offsetX;
-//     offsetX = e.clientX;
-//     let offsetY;
-//     offsetY = e.clientY;
-//
-//     // assign default values for top and left properties
-//     if(!targ.style.left) { targ.style.left='0px'};
-//     if (!targ.style.top) { targ.style.top='0px'};
-//
-//     // calculate integer values for top and left
-//     // properties
-//     let coordX;
-//     coordX = parseInt(targ.style.left);
-//     let coordY;
-//     coordY = parseInt(targ.style.top);
-//     let drag;
-//     drag = true;
-//
-//     // move div element
-//     document.onmousemove=dragDiv;
-//
-// }
-// function dragDiv(e) {
-//     if (!drag) {return};
-//     if (!e) { var e= window.event};
-//     var targ=e.target?e.target:e.srcElement;
-//     // move div element
-//     targ.style.left=coordX+e.clientX-offsetX+'px';
-//     targ.style.top=coordY+e.clientY-offsetY+'px';
-//     return false;
-// }
-// function stopDrag() {
-//     let drag;
-//     drag=false;
-// }
-// window.onload = function() {
-//     document.onmousedown = startDrag;
-//     document.onmouseup = stopDrag;
-// };
+// $( function() {
+//     $( "#draggable" ).draggable();
+// } );
+
+
 
 
 
@@ -157,30 +85,63 @@
 //
 // console.log(missingNum("1,2,4,5,6,8"));
 //
-
-const button = document.getElementById("submit");
-console.log(button);
-
-function volume_sphere(){
-    // e.preventDefault();
-    let volume;
-    let radius = document.getElementById('radius').value;
-    radius = Math.abs(radius);
-    volume = (4/3) * Math.PI * Math.pow(radius, 3);
-    volume = volume.toFixed(4);
-    document.getElementById('volume').value = volume;
-    return false;
-
-}
-window.onload = document.getElementById('MyForm').onsubmit = volume_sphere;
+//
+// const button = document.getElementById("submit");
+// console.log(button);
+//
+// function volume_sphere(){
+//     // e.preventDefault();
+//     let volume;
+//     let radius = document.getElementById('radius').value;
+//     radius = Math.abs(radius);
+//     volume = (4/3) * Math.PI * Math.pow(radius, 3);
+//     volume = volume.toFixed(4);
+//     document.getElementById('volume').value = volume;
+//     return false;
+//
+// }
+// window.onload = document.getElementById('MyForm').onsubmit = volume_sphere;
 
 // button.addEventListener('click', volume_sphere,true);
 //
 
+//
+// function getDay(day) {
+//     let d = new Date(day);
+//     let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+//     return days[d.getDay()]
+// }
+// console.log(getDay("05/19/2020"));
+//
+//
+// console.log("old stuff above");
+//
+//
+// // New stuff
+//
+// console.log("How many days have passed since current date: ");
+//
+// function days_passed(dt) {
+//     let current = new Date(dt.getTime());
+//     let previous = new Date(dt.getFullYear(), 0, 1);
+//
+//     return Math.ceil((current - previous + 1) / 86400000);
+// }
+//
+// console.log(days_passed(new Date(2019, 12, 6)));
+//
+//
+// // 2nd new stuff
+//
 
-function getDay(day) {
-    let d = new Date(day);
-    let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    return days[d.getDay()]
-}
-console.log(getDay("05/19/2020"));
+$( function() {
+    $( "#star-five" ).draggable();
+    $( "#star1" ).droppable({
+        drop: function( event, ui ) {
+            $( this )
+                .addClass( "ui-state-highlight" )
+                .find( "p" )
+                .html( "Dropped!" );
+        }
+    });
+} );
