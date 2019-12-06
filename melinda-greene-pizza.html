@@ -7,47 +7,70 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <script src="melinda-greene.js"></script>
 <style>
-<!--    #crust{-->
-<!--        height: 650px;-->
-<!--        width: 650px;-->
-<!--        background-color: burlywood;-->
-<!--        border: 1px black solid;-->
-<!--        border-radius: 50%;-->
-<!--        margin-top: 90px;-->
-<!--        moz-box-shadow: inset 2px 2px 2px rgba(255, 255, 255, .4), inset -2px -2px 2px rgba(0, 0, 0, .4);-->
-<!--        -webkit-box-shadow: inset 2px 2px 2px rgba(255, 255, 255, .4), inset -2px -2px 2px rgba(0, 0, 0, .4);-->
-<!--        box-shadow: inset 2px 2px 2px rgba(255, 255, 255, .4), inset -2px -2px 2px rgba(0, 0, 0, .4);-->
-<!--        top: -23px;-->
-<!--        left:0px;-->
-<!--        position:relative;-->
-<!--    }-->
-<!--    .card{-->
+    #crust{-->
+        height: 650px;-->
+        width: 650px;-->
+        background-color: burlywood;-->
+        border: 1px black solid;-->
+        border-radius: 50%;-->
+        margin-top: 90px;-->
+        moz-box-shadow: inset 2px 2px 2px rgba(255, 255, 255, .4), inset -2px -2px 2px rgba(0, 0, 0, .4);-->
+        -webkit-box-shadow: inset 2px 2px 2px rgba(255, 255, 255, .4), inset -2px -2px 2px rgba(0, 0, 0, .4);-->
+        box-shadow: inset 2px 2px 2px rgba(255, 255, 255, .4), inset -2px -2px 2px rgba(0, 0, 0, .4);-->
+        top: -23px;-->
+        left:0px;-->
+        position:relative;-->
+    }-->
 
-<!--        align-items: center;-->
-<!--        background-color: #7bbeff;-->
-<!--        width: 800px;-->
-<!--        height: 800px;-->
-<!--        margin-left: 50%;-->
-<!--        margin-right: 50%;-->
-<!--    }-->
 
-<!--    #pepperoni img{-->
-<!--        width:100px;-->
-<!--        height: 100px;-->
-<!--        margin-left: 1000px;-->
 
-<!--    }-->
+    #box{
+        height: 500px;
+        width: 500px;
+        background: lightgrey;
+    }
+    .card{-->
 
-<!--    #pineapple img {-->
-<!--        width:100px;-->
-<!--        height:100px;-->
-<!--        /*user-select: none;*/-->
-<!--        /*pointer-events: none;*/-->
-<!--    }-->
+        align-items: center;-->
+        background-color: #7bbeff;-->
+        width: 800px;-->
+        height: 800px;-->
+        margin-left: 50%;-->
+        margin-right: 50%;-->
+    }-->
 
-<!--    #pineapple {-->
-<!--        position:relative;-->
-<!--    }-->
+    .card-body{
+        height: 500px;
+        width:500px;
+    }
+
+    #draggable { width: 150px; height: 150px; padding: 0.5em; }
+
+    #pepperoni img{-->
+        width:100px;-->
+        height: 100px;-->
+        margin-left: 1000px;-->
+
+    }-->
+
+    #pineapple img {-->
+        width:100px;-->
+        height:100px;-->
+        user-drag: none;
+        user-select: none;
+        -moz-user-select: none;
+        -webkit-user-drag: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        cursor: move;
+        /*user-select: none;*/-->
+        /*pointer-events: none;*/-->
+    }-->
+
+    #pineapple {-->
+        position:relative;-->
+
+    }-->
 
     #outside {
         height:700px;
@@ -132,13 +155,14 @@
     <div class="card-body">
         <div class="outside"></div>
 <div class="crust"></div>
-
+    </div>
+</div>
 <!--    </div>-->
 <!--</div>-->
 
 
 
-
+<div id="box" class="droppable"></div>
 
 
 <!--<div id="mydiv">-->
@@ -154,12 +178,14 @@
 <!--    <div id="container">-->
 <!--        <div id="box"></div>-->
 
-        <div class="toppings">
-         <img src="img/pineapple.png">
-         <img src="img/pepperoni.png">
+        <div id= draggable class="toppings">
+            <div><img src="img/pineapple.png" alt="pineapple" id="pineapple"></div>
 
         </div>
-<!--        <div id="item"></div>-->
+
+<div id= "pepperoni"> <img src="img/pepperoni.png" alt="pepperoni"></div>
+
+
 
 <!--    </div>-->
 <!--</div>-->
